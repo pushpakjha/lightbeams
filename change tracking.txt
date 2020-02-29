@@ -1,0 +1,90 @@
+Pushpak Jha
+
+Light.io change tracking
+
+8/3/2016, v1 completed
+8/7/2016, v2 base changes completed but buggy
+8/24/2016, v2 base changes actually completed, robust connect/disconnect
+8/28/2016, v2 completed, Leaderboard completed, minor mechanics/graphics updates, fixed color bug
+8/31/2016, v3 Performance updates made, glow effect added to player trails
+9/4/2016,  v3 more performance updates, new animation engine, allows for better glow effects
+9/6/2016,  v3 performance udates, another new animation engine, added face, wall borders
+9/9/2016,  v3 power-ups added, hard-coded player names added
+9/12/2016, v3 completed, still needs polish but moving to hosting live
+9/12/2016, v4 initial live hosting successful via digitalocean nginx reverse proxy
+9/13/2016, v4 updated power-up graphics
+9/24/2016, v4 ignore inputs which cause insta-self kill   
+9/25/2016, v4 added instructions page
+8/6/2017,  v4 added bot for single player
+
+Completed:
+v1:
+ - Base gameplay
+   - Matchmaking with two players
+      - If odd number of players, play vs bot
+   - Basic tron-like gameplay
+   - Collision detection
+ - Robust connection/disconnection handling, better matchmaking essentially
+ - Large gameboard 3x
+  - Moving view window, specific to each player
+
+v2: 
+- Support for more than 2 players; 6, 8 or 10? Can now control number of players with 1 variable in server.js
+- Re-do robust connection/disconnection handling
+- Constant movement, more tron-like, controlled by 1 flag
+- Leaderboard, shows length of "light trail" as score and number of kills/deaths
+
+v3:
+- Add power-ups randomly around game board
+- Graphics updates
+  - View window dynamically re-sizes to browser size
+  - Add background style, light grey boxes on dark background, using grid function for now
+  - Add wall borders
+  - Improve leaderboard visibility/style
+  - Make players appear more like light-beams/light-bikes
+    - Add glow effects like light, make glow stronger based on score, had to re-write animation engine twice
+    - Use better color pallette
+    - Add some kind of face to indicate direction
+- Performance updates
+  - Using off-screen canvas, now also using multiple canvas's for each layer
+  - Eliminated matrixCount and other expensive functions
+  - Changed animation to moveTo, lineTo and stroke rather than fillRect
+  - Animation engine now collects x and y line segments and draws them, rather than each block as a line, was decent performance boost
+- Mechanics
+  - Speed of movement tied to your score, NEEDS TO ALSO TIE TO DELTA TIME
+- Add intro page to enter name, display name, also add death page to respawn
+
+v4:
+- Host on a live server
+- Ignore inputs which cause insta-self kill, ie if going right hitting left would kill you, so ignore. 
+Technically, if going left/right only up/down inputs should change you and vice versa.
+- Add help page to explain power-ups
+- Bought domain name, lightbeams.io
+- Added email feedback form on page, lightbeamsio@gmail.com
+- Launched alpha test
+  - Added bot for single players
+
+In Progress: 8/6/2017
+- Long-Term - Fine tune mechanics and graphics and performance
+v4:
+- Launch alpha test
+  - Test and improve live server performance
+  - Drive traffic to get feedback
+    - Make video of bot
+
+Up Next:
+v5:
+- Improve performance, likely hosting on a live server will have new challenges
+  - Animation engine only renders differences from previous scene, seems not possible
+  - Client-prediction based animation to look smooth
+  - Eliminate large or numerous loops
+  - Improve matchmaking
+  - Add social media connections and sharing
+
+v6:
+- Convert to Android app
+
+v7:
+- Convert to Apple app
+Minor bug list:
+- Make new spawn pos of player/power-ups away from other "trails" or power-ups, right now too random

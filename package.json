@@ -1,0 +1,9 @@
+{
+    "name": "lightbeams-tron-game",
+    "version": "1.0.0",
+    "dependencies": {
+        "express": "^4.17.1",
+        "node-uuid": "^1.4.8",
+        "socket.io": "^2.3.0"
+    }
+}

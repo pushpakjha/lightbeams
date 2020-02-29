@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>	
+		<meta charset="utf-8">
+		<title> Lightbeams.io </title>
+		<link rel="stylesheet" href="main.css">
+	</head>
+
+	<body>
+
+		<canvas id="viewport">
+		</canvas>
+		
+		<div id="endScreen">
+			<div id="endScreenContent">
+				<h1 id="txtEndTitle">Lightbeams.io</h1>
+				<h2 id="txtEndMessage">Alpha Test</h2>
+				<input type="text" id = "textInputBox"></input>
+				<button type="button" id="endButton" onclick="restart()">Start Game</button>
+				<button type="button" id="helpButton">Instructions</button>
+				<button type="button" id="aboutButton">About</button>
+			</div>
+			
+			<!-- The Help Modal -->
+			<div id="myModal" class="modal">
+
+			  <!-- Modal content -->
+			  <div id = "modalContent" class="modal-content">
+				<span id = "iSpan" class="close">×</span>
+				<p id = "instruct">Instructions</p>
+				<p id = "survive">Use the arrow keys to move. Survive the longest, get the most kills and least deaths!</p>
+				<p id = "gameplay">Don't run into yourself or others and don't hit the walls. Use the power-ups to gain a temporary advantage.
+				The longer you live the faster you go.</p>
+				<div id="powerUpDefs">
+					<p id="spdUp">Speed up 2x, 	CURRENTLY DISABLED</p>
+					<img id="speedUpImg" src="images/speedUp.png" alt="SpeedUp" height="42" width="42">
+					<p id="slowDwn">Slow down 0.5x, CURRENTLY DISABLED</p>
+					<img id="slowDownImg" src="images/slowDown.png" alt="SlowDown" height="42" width="42">
+					<p id="clrPath">Clears your trail from board, does not count as death, score remains the same.</p>
+					<img id="clearPathImg" src="images/clearPath.png" alt="ClearPath" height="42" width="42">
+					<p id="savePath">On your next death, your trail will persist on the board.</p>
+					<img id="savePathImg" src="images/savePath.png" alt="SavePath" height="42" width="42">
+					<p id="star">Ignore collisions, pass through yourself and others. The walls will still kill you.</p>
+					<img id="starImg" src="images/star.png" alt="Star" height="42" width="42">
+				</div>	
+			  </div>
+
+			</div>
+			
+			<!-- The About Modal -->
+			<div id="myAboutModal" class="modal">
+
+			  <!-- About Modal content -->
+			  <div id = "aboutModalContent" class="modal-content">
+				<span id = "aboutSpan" class="close">×</span>
+				<p id = "aboutLB">About Lightbeams.io</p>
+				<p id = "madeBy">Created by Pushpak Jha</p>
+				<p id = "aboutInfo">Wanted to make an easy to play, browser-based multiplayer Tron like game. Uses Node.js running an express server and socket.io for real-time multiplayer data transfer. Mostly made it in my spare time to sharpen my coding/javascript skills.</p>
+				<p id = "emailInfo">Contact the developer with any feedback at lightbeamsio@gmail.com.</p>
+			  </div>
+
+			</div>
+		
+		</div>		
+		
+		<div class="leaderboard">
+			<ul class="topPlayers" id="myTopPlayers"></ul>	
+		</div>
+	
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+		<script type="text/javascript" src="keyboard.js"></script>
+		<script type="text/javascript" src="fpsmeter.js"></script>
+		<script type="text/javascript" src="randomcolor.js"></script>
+		
+		<script src="client.js"></script>
+	</body>
+
+</html>
