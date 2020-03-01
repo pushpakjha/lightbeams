@@ -48,7 +48,7 @@ function onConnection(sock) {
 		//if no game exists with someone waiting, they create one and wait.
 	gameCountOnConnection = findGame(userid, sock);
 	console.log('gameCountOnConnection: ', gameCountOnConnection)
-	console.log('game_server.games in 45: ', game_server.games)
+	// console.log('game_server.games in 45: ', game_server.games)
 	sock.on('disconnect', function () {
 
 			//Useful to know when soomeone disconnects
