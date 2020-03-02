@@ -198,9 +198,10 @@ function onStartGame(startGameInput){
 	blockPos = [];
 	score = [];
 	powerUpState = [];
-	
+	powerUpInitialCount = 5;
+
 	// x,y locations of 3 power-ups around global board when new game spawns
-	for(var p=0;p<0;p++){ // powerUpsLength
+	for(var p=0;p<powerUpInitialCount;p++){ // powerUpsLength
 		
 		var randXPos = Math.floor(Math.random()*windowXSize/blockSize);
 		var randYPos = Math.floor(Math.random()*windowYSize/blockSize);
@@ -532,11 +533,12 @@ function onUpdatePos(fullUpdate){
 	//console.log('newTestPos 1: ',newTestPos)
 	//var speedLimit = 1+Math.floor(totalPlayers.score[pIndex][0]/200);
 	var speedLimit = 1;
-	var godMode = 1; // Used for testing vs bot
+	var godMode = 0; // Used for testing vs bot
+	console.log('godMode: ', godMode)
 	//console.log('playerLen: ', playerLen)
 	//console.log('totalPlayers.score[pIndex][3][0]: ', totalPlayers.score[pIndex][3][0])
 	
-	// Set bot is only 1 player
+	// Set bot if only 1 player
 	if(playerLen == 1){
 		isBot = 1;
 	}else{
@@ -941,7 +943,7 @@ function restart(){
 function mainDraw(){
 	
 	// Have camera follow bot
-	var cameraFollowBot = 1;
+	var cameraFollowBot = 0;
 	
 	if (typeof totalPlayers === 'undefined') {
 		// variable is undefined, do nothing, default viewMatrix will be drawn		
@@ -1303,7 +1305,7 @@ function drawPowerUps(TLCx,TLCy,xSize,ySize){
 				drawLocPU = 1;
 				locXPUPos = (locXPUPos - TLCx)*blockSize;
 				locYPUPos = (locYPUPos - TLCy)*blockSize;
-				//console.log('drawLocPU: ', drawLocPU)
+				console.log('drawLocPU: ', drawLocPU)
 			}
 		}		
 		
@@ -1599,16 +1601,16 @@ function spawnNewPowerUp(updatedPos,puColl,x,pIndex){
 	}
 
 	console.log('RESET POWERUP: ',puIndex)	
-	//var randXPos = Math.floor(Math.random()*windowXSize/blockSize);
-	//var randYPos = Math.floor(Math.random()*windowYSize/blockSize);
+	var randXPos = Math.floor(Math.random()*windowXSize/blockSize);
+	var randYPos = Math.floor(Math.random()*windowYSize/blockSize);
 	
-	var randXPos = updatedPos.x + 10;
-	var randYPos = updatedPos.y + 10;
+	// var randXPos = updatedPos.x + 10;
+	// var randYPos = updatedPos.y + 10;
 	
 	// Speed up/slow down are broken, so only spawn power ups 2-4
 	var powerUpType = Math.floor(Math.random()*3)+2;
 	//console.log('powerUpType in spawnNewPowerUp: ', powerUpType);
-	//var powerUpType = Math.floor(Math.random()*5); // allow all power ups 0-4
+	// var powerUpType = Math.floor(Math.random()*5); // allow all power ups 0-4
 	var newRandPowerUp = [randXPos,randYPos,powerUpType];
 	
 	totalPlayers.powerUps[puIndex] = newRandPowerUp;
